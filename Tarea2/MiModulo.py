@@ -12,4 +12,3 @@ def Continuar():
         else:
             print("Opcion Invalida")
 
-print(Continuar())
