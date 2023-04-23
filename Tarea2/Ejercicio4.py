@@ -1,7 +1,7 @@
 """
 Curso Python Nivel 1
 Autor Esteban Garro Echevarria
-2.	4.	Fórmula para sacar el resultado de la raíz de la suma de A más B dividiendo 
+4.	Fórmula para sacar el resultado de la raíz de la suma de A más B dividiendo 
 el resultado por C, con base a los valores ingresados por pantalla. 
 Nota utilizar la función sqrt. 
 """
