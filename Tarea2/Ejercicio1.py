@@ -29,6 +29,7 @@ def Validar():
 
 Validar()
 
+#Llamamos a la Funcion Continuar del MiModulo para verificar si desea otra operacion
 while MiM.Continuar():
     Validar()
 
