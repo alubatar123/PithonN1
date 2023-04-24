@@ -7,7 +7,7 @@ Nota utilizar la función sqrt.
 """
 # import math module
 import math
-
+import MiModulo as MiM
 #Funcion que calcula ((Raiz[A+B])/c)
 def Calcular(a,b,c):
     try:
@@ -41,6 +41,12 @@ def IngresaDAto():
     Migenerador=(Calcular(Valores[0],Valores[1],Valores[2]))
     print(next(Migenerador))
     #print(Migenerador)
+def VerificaValores():
+    print(MiM.IngresaDAto)
+    # Migenerador=(Calcular(MiM.IngresaDAto))
+
+    # print(next(Migenerador))
+
 
 def Continuar():
     Conti=True
@@ -55,6 +61,6 @@ def Continuar():
         else:
             print("Opcion Invalida")
 
-IngresaDAto()
+VerificaValores()
 Continuar()
     
