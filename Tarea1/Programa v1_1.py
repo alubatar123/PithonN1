@@ -1,7 +1,3 @@
-#Buenas Profesor,
-
- #Como tuvimos varios dias libres y ocupaba ir practicando otros conceptos, aproveche la tarea para incluir otras opciones. 
-
 General_Boolean=False
 
 DicEstu={}
