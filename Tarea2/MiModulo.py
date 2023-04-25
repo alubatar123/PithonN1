@@ -1,9 +1,12 @@
 
 def Continuar():
+    """
+    Funcion que permite cancelar o seguir el programa retorando True para Yes, False para No
+    """
     Conti=True
     #Solicita al usuario confirmar con Y o N si desea ingrear mas numeros
     while Conti:
-        Confirmar=(input("Desea tratar otro numero?:y/n "))
+        Confirmar=(input("Desea tratar de nuevo?:y/n "))
         if Confirmar=="y" or Confirmar=="Y":
             return True
         elif Confirmar=="n" or Confirmar=="N":
@@ -13,7 +16,13 @@ def Continuar():
             print("Opcion Invalida")
 
 def IngresaDAto(max,param1,param2,param3):
-    
+    """
+    Esta funcion valida que los datos sean del formato adecuado\n
+    Max= cantidad de valores necesarios para los calculos\n
+    Param1= Nombre de parametro 1\n
+    Param2= Nombre de parametro 2\n
+    Param3= Nombre de parametro 3
+    """
     Valores=[0,0,0]
     Datos=[param1,param2,param3]
     i=0

@@ -9,8 +9,11 @@ Nota utilizar la función sqrt.
 import math
 import MiModulo as MiM
 
-#Funcion que calcula ((Raiz[A+B])/c)
+
 def Calcular(a,b,c):
+    """
+    Funcion que calcula ((Raiz[A+B])/c)
+    """
     print(a,b,c)
     try:
       Result=("El resultado de ((Raiz[A+B])/c): "+str((math.sqrt(a+b))/c))
