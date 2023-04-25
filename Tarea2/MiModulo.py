@@ -12,19 +12,19 @@ def Continuar():
         else:
             print("Opcion Invalida")
 
-def IngresaDAto():
+def IngresaDAto(max,param1,param2,param3):
     
-    Valores=[]
-    Datos=["a","b","c"]
+    Valores=[0,0,0]
+    Datos=[param1,param2,param3]
     i=0
     #funcion que pide el dato a verificar
     
-    while i<3:
+    while i<max:
         Numero=(input(f"Ingrese el valor de {Datos[i]} :"))
         while True:
             #Llama VerificaNumero siempre que el dato ser numerico
             try:
-                Valores.append(float(Numero))           
+                Valores[i]=(float(Numero))           
                 i+=1
             #Excepcion controlada en caso de ingresar un dato no numerico
                 break
@@ -34,4 +34,3 @@ def IngresaDAto():
     #Almacenamos el resultado del generador en el iterador Migenerador   
     return Valores[0],Valores[1],Valores[2]              
 
-    #print(Migenerador)

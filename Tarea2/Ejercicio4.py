@@ -5,11 +5,13 @@ Autor Esteban Garro Echevarria
 el resultado por C, con base a los valores ingresados por pantalla. 
 Nota utilizar la función sqrt. 
 """
-# import math module
+# import math module y MiModulo
 import math
 import MiModulo as MiM
+
 #Funcion que calcula ((Raiz[A+B])/c)
 def Calcular(a,b,c):
+    print(a,b,c)
     try:
       Result=("El resultado de ((Raiz[A+B])/c): "+str((math.sqrt(a+b))/c))
       yield Result
@@ -17,50 +19,18 @@ def Calcular(a,b,c):
     except ValueError:
         Error="Error. Revise formula: math.sqrt(x) donde x>= 0 "
         yield Error
-        
-def IngresaDAto():
-    
-    Valores=[]
-    Datos=["a","b","c"]
-    i=0
-    #funcion que pide el dato a verificar
-    
-    while i<3:
-        Numero=(input(f"Ingrese el valor de {Datos[i]} :"))
-        while True:
-            #Llama VerificaNumero siempre que el dato ser numerico
-            try:
-                Valores.append(float(Numero))           
-                i+=1
-            #Excepcion controlada en caso de ingresar un dato no numerico
-                break
-            except ValueError:
-                print("Valor invalido, intente de nuevo")
-                Numero=(input(f"Ingrese el valor de {Datos[i]} :"))
-    #Almacenamos el resultado del generador en el iterador Migenerador                 
-    Migenerador=(Calcular(Valores[0],Valores[1],Valores[2]))
-    print(next(Migenerador))
-    #print(Migenerador)
+
+#Llama la funcion IngresaDatos de MiModulo        
 def VerificaValores():
-    print(MiM.IngresaDAto)
-    # Migenerador=(Calcular(MiM.IngresaDAto))
+    Milist=((MiM.IngresaDAto(3,"a","b","c")))
+    #Llama la funcion Calcular
+    print(next(Calcular(Milist[0],Milist[1],Milist[2])))
 
-    # print(next(Migenerador))
 
-
-def Continuar():
-    Conti=True
-    #Solicita al usuario confirmar con Y o N si desea ingrear mas numeros
-    while Conti:
-        Confirmar=(input("Desea tratar otro numero?:y/n "))
-        if Confirmar=="y" or Confirmar=="Y":
-            IngresaDAto()
-        elif Confirmar=="n" or Confirmar=="N":
-             Conti=False
-    #Si el usuario ingresa Otro dato, se muestra error         
-        else:
-            print("Opcion Invalida")
-
+#Inicia el programa con la funcion VerificaValores
 VerificaValores()
-Continuar()
+
+#Llamamos a la Funcion Continuar del MiModulo para verificar si desea otra operacion
+while MiM.Continuar():
+    VerificaValores()
     

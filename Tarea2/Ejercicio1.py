@@ -4,7 +4,9 @@ Autor Esteban Garro Echevarria
 1.	Un programa que determina si un número es positivo o negativo
 """
 
-import MiModulo as MiM
+#Importa el modulo Continuar
+from MiModulo import Continuar as Cont
+
 #boolean que nos permite detener el programa o ingresar mas numeros     
 Validar=True
 
@@ -27,10 +29,11 @@ def Validar():
             print("Valor invalido, intente de nuevo")
             Numero=input("Ingrese el numero: ")
 
+#Ejecutamos la primer funcion del programa
 Validar()
 
 #Llamamos a la Funcion Continuar del MiModulo para verificar si desea otra operacion
-while MiM.Continuar():
+while Cont():
     Validar()
 
     

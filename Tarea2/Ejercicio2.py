@@ -12,20 +12,14 @@ def VerificaNumero(Dato):
     else:
         print(f"El numero ",Dato," es impar")
 
-def IngresaDAto():
-    #funcion que pide el dato a verificar
-    Numero=(input("Ingrese el numero: "))
-    while True:
-        #Llama VerificaNumero siempre que el dato ser numerico
-        try:
-            VerificaNumero(float(Numero))
-        #Excepcion controlada en caso de ingresar un dato no numerico
-            break
-        except ValueError:
-            print("Valor invalido, intente de nuevo")
-            Numero=input("Ingrese el numero: ")        
+ #Llama la funcion IngresaDatos de MiModulo      
+def VerificaValores():
+    Milist=((MiM.IngresaDAto(1,"el numero","","")))
+    #Llama la funcion VerificaNumero
+    VerificaNumero(Milist[0])
 
-IngresaDAto()
+
+VerificaValores()
 #Llamamos a la Funcion Continuar del MiModulo para verificar si desea otra operacion
 while MiM.Continuar():
-    IngresaDAto()
+    VerificaValores()
