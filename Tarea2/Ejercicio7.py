@@ -19,7 +19,7 @@ def VerificaLibres():
     dia=1
     #Ciclo que nos permite escojer 2 dias libres
     while dia<3:
-        #Pone en Menu los dias NoLibres para escojer
+        #Pone en Menu los dias NoLibres para escojer 2
         for keys in Semana.keys(): 
             if Semana[keys]!="|  Libre**  |":
                 print(keys.replace('|',''),"(",Semana[keys],")")
