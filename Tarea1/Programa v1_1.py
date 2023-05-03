@@ -3,9 +3,9 @@ General_Boolean=False
 DicEstu={}
 #Menu principal del programa
 def Menu():
-    global General_Boolean
+    #global General_Boolean
     global DicDatos
-    while General_Boolean==False:
+    while General_Boolean==False:   
         print(" ______________________________________________"'\n'
                "|    Bienvenido a la Academia de Tecnologia    |"'\n'
                "|                                              |"'\n'               
