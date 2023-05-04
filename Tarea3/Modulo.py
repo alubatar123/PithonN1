@@ -31,5 +31,8 @@ def Continuar():
 def Escribir(Resultado):  
     now = datetime.now()
     HoraActual = now.strftime("%H:%M:%S") 
-    with open ("C:/Users/Chango/Desktop/Python/Curso/PithonN1/Tarea3/Resultados.txt","a+") as archivo:        
+    #Se adjuntan datos al archivo de texto
+    #Se puede especificar la ruta del archivo. Ejemplo:
+    #    C:/Curso/PithonN1/Tarea3/Resultados.txt
+    with open ("Resultados.txt","a+") as archivo:        
         archivo.write(HoraActual+" "+Resultado+"\n")
