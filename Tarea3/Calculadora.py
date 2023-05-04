@@ -42,7 +42,7 @@ def Cantidad(operacion,Selec):
     while True:
         try:
             Cant=int(input("¿Cuantos numeros desea "+operacion+"? "))
-            if Cant==1:
+            if Cant<2:
                 print("El minimo son 2 numeros")
                 Cantidad(operacion,Selec)
             else:
@@ -141,7 +141,7 @@ def Dividir(Cant,Total=0,i=1):
                     elif i!=1 and Num == 0:print("No se puede dividir entre cero")            
                     else:
                         Dividir(Cant-1,(Total/Num),i+1) 
-                        break
+                    break
                 #try/except para prevenir formatos incorrectos
                 except ValueError:
                     print("Valor incorrecto")    
