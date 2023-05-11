@@ -18,8 +18,7 @@ Aciertos=8
 LetrasFallidas=["Letras Fallidas: "]
 Error=""
 
-def MuestraLetras(NewLetter,Word):    
-        #global Gano
+def MuestraLetras(NewLetter,Word):  
         ListaGano=[]
         Gano=False
         for x in Word:
@@ -44,42 +43,31 @@ def RandomWord():
 
 def Adivina(Word,Letras=[]):
         global Aciertos,LetrasFallidas,Gano 
-        if Aciertos > 0:                
-                #while True:
-                        
-                        Gano=FiguraInicial(Letras,Word)
-                        
-                                              
-                        if Gano:
-                                ImprimeGano(Word)
-                                
-                                                          
+        if Aciertos > 0:
+                Gano=FiguraInicial(Letras,Word)                
+                                        
+                if Gano:
+                        ImprimeGano(Word)               
+                else:
+                        NewLetter=(input("\nDigite una letra: "))                                                 
+                        if RevisaLetra(NewLetter,Letras):                                        
+                                print("\n\n\n\n",Error,"Trate de nuevo")
+                                print(f"Le quedan {Aciertos} intentos!")
+                                Adivina(Word)
                         else:
-                                NewLetter=(input("\nDigite una letra: ")) 
-                                                        
-                                if RevisaLetra(NewLetter,Letras):
-                                        #MuestraLetras(Letras,Word)
-                                        print("\n\n\n\n",Error,"Trate de nuevo")
-                                        print(f"Le quedan {Aciertos} intentos!")
-                                        Adivina(Word)
-                                else:
-                                        Letras.append(NewLetter.lower())
-                                        if NewLetter.lower() not in Word:
-                                                LetrasFallidas.append(NewLetter)                                
-                                                Aciertos-=1
-                                                if Aciertos> 0:
-                                                        print("\n\n\n\n"
-                                                        f"Incorecto.Le quedan {Aciertos} intentos!")
-                                                CambiaFigura(-Aciertos)        
-                                                Adivina(Word)                                
-                                                #break                               
-                                        else:
+                                Letras.append(NewLetter.lower())
+                                if NewLetter.lower() not in Word:
+                                        LetrasFallidas.append(NewLetter)                                
+                                        Aciertos-=1
+                                        if Aciertos> 0:
                                                 print("\n\n\n\n"
-                                                f"Correcto. Posee {Aciertos} intentos más!")
-                                                
-                                                Adivina(Word)
-                                                
-                      
+                                                f"Incorecto.Le quedan {Aciertos} intentos!")
+                                        CambiaFigura(-Aciertos)        
+                                        Adivina(Word)           
+                                else:
+                                        print("\n\n\n\n"
+                                        f"Correcto. Posee {Aciertos} intentos más!")                                        
+                                        Adivina(Word)
         else:
                 ImprimePerdio(Word)
  
@@ -100,7 +88,6 @@ def FiguraInicial(Letras,Word):
         Gane=MuestraLetras(Letras,Word)
         for x in LetrasFallidas:
                 print (x,end=" ")
-        #NewLetter=(input("\nDigite una letra: "))
         return Gane        
 
 def ImprimeFigura():
@@ -111,7 +98,7 @@ def ImprimeGano(Word):
         print("\n\n\n\n")
         for x in FiguraGano:
             print(x)
-        print("Felicidades!! La palabra era:",Word.upper())       
+        print("\nFelicidades!! La palabra era:",Word.upper(),"\n")       
 
 def ImprimePerdio(Word):
         print("\n\n\n\n")
@@ -132,11 +119,9 @@ def RevisaLetra(NuevaLetra,Lista):
                 return True    
         else:
                 return False
-      
 
+RandomWord()
 
-#RandomWord()
-Adivina("sucio")
 
 
 
