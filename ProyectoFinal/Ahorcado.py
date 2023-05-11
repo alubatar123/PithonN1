@@ -2,93 +2,126 @@ import os
 import random
 
 Figura=["o=============o","||      ","||     ","||  ",
-        "||    ","||  ","||____________","|             |"]
+        "||    ","||  ","||____________","|_____________|"]
 
 Figura1=["o=============o","||      |","||     _WW_ ","||    (°︿°)",
         "||     |︿| ","||     |︿|\_ ","||   _/|︿|\_ ","||     ⅃  ","||     ⅃  L"]
 
-Figura2=["o=============o","||      |","||     _WW_ ","||    (ˣ_̲ ˣ)","||   ‾\|︿|/‾ ",
-        "||     ⅃  L","||____________","|             |"]
+FiguraPerdio=["o=============o","||      |","||     _WW_ ","||    (ˣ_̲ ˣ)","||   ‾\|︿|/‾ ",
+        "||     ⅃  L","||____________","|_____________|"]
 
-Figura3=["o=============o","||      |","||     _WW_ ","||    (ˣ_̲ ˣ)","||   ‾\|︿|/‾ ",
-        "||     ⅃  L","||____________","|             |"]
+FiguraGano=["|￣￣￣￣￣￣| ","|  Ganaste!  |","|____________|","(\__/) ||","(•ㅅ•) || ",
+            "/   づ"]
 
-Word="prueba"
+
 Aciertos=8
+LetrasFallidas=["Letras Fallidas: "]
+Gano=False
 
-def FuncionNormal2(e):    
-    print(Word)
-    ListaGano=[]
-    Gano=False
-    for x in Word:
-        if x in e:
-              print (x,end=" ")
-              
-        else:
-              print ("_",end=" ")
-              ListaGano.append("_")
-    if len(ListaGano)== 0:
-         Gano=True
+def MuestraLetras(NewLetter,Word):    
+        global Gano
+        ListaGano=[]
+        Gano=False
+        for x in Word:
+                if x in NewLetter:
+                     print (x,end=" ")              
+                else:
+                        print ("_",end=" ")
+                        ListaGano.append(x) 
+        print("")           
+        if len(ListaGano)== 1:                
+                Gano=True
              
-    Adivina(e,Gano)
 
+def RandomWord():
+        Palabras=[]
+        Archivo=open('C:/Users/Chango/Desktop/Python/Curso/PithonN1/ProyectoFinal/Palabras.txt','r')
+        x=(Archivo.readlines())
+        for line in x:
+                Palabras.append(line.strip())         
+        Adivina(Palabras[random.randrange(0, len(Palabras))])
 
+def Adivina(Word,Letras=[]):
+        global Aciertos,LetrasFallidas,Gano
 
-# def RandomWord():
-#     Palabras=[]
-#     Archivo=open('C:/Users/Chango/Desktop/Python/Curso/PithonN1/ProyectoFinal/Palabras.txt','r')
-#     x=(Archivo.readlines())
-#     for line in x:
-#         Palabras.append(line.strip())    
-#     FuncionNormal2(Palabras[random.randrange(0, 77)])
-
-def Adivina(Letras=[],Gano=False):
-    global Aciertos,Word
-    print(Aciertos)
-    if Gano == False:
-          if Aciertos > 0:
-                print(Aciertos)
-                NewLetter=(input("Letra"))
-                Letras.append(NewLetter)
-                if NewLetter not in Word:
-                        Aciertos-=1
-                        print(f"Le quedan {Aciertos} intentos!\n")
-                CambiaFigura(-Aciertos)        
-                FuncionNormal2(Letras)
-          else:
-                print("Maximo intentos fallidos, lo sentimos")
-                for x in Figura2:
-                     print(x)
-               
-    else:
-        print("Felicidades adivinó!!!!")                
+        if Aciertos > 0:                
+                while True:                        
+                        if Gano:
+                                ImprimeGano(Word)
+                                break
+                        ImprimeFigura()
+                        MuestraLetras(Letras,Word)
+                        for x in LetrasFallidas:
+                                print (x,end=" ")
+                        NewLetter=(input("\nDigite una letra: "))
+                                
+                        if RevisaLetra(NewLetter,Letras):
+                                MuestraLetras(Letras,Word)
+                                print("\n\n\n\nVAlOR INVALIDO, Trate de nuevo")
+                                print(f"Le quedan {Aciertos} intentos!")
+                        else:
+                                Letras.append(NewLetter.lower())
+                                if NewLetter.lower() not in Word:
+                                        LetrasFallidas.append(NewLetter)                                
+                                        Aciertos-=1
+                                        if Aciertos> 0:
+                                                print("\n\n\n\n"
+                                                      f"Incorecto.Le quedan {Aciertos} intentos!")
+                                        CambiaFigura(-Aciertos)        
+                                        Adivina(Word)                                
+                                        break
+                               
+                                else:
+                                        print("\n\n\n\n"
+                                              f"Correcto. Posee {Aciertos} intentos más!")
+                                        
+        else:
+                ImprimePerdio(Word)
 
                 
 def CambiaFigura(index):
-     print("indice",index)
-     if index == -7:Figura[index]=Figura1[1]
-     if index == -6:Figura[index]=Figura1[2]
-     if index == -5:Figura[index]=Figura1[3]
-     if index == -4:Figura[index]=Figura1[4]
-     if index == -3:Figura[-4]=Figura1[5]
-     if index == -2:Figura[-4]=Figura1[6]
-     if index == -1:Figura[-3]=Figura1[7]
-     if index == 0:Figura[-3]=Figura1[8]
-     for x in Figura:
-        print(x)
+        global Figura       
+        if index == -7:Figura[index]=Figura1[1]
+        if index == -6:Figura[index]=Figura1[2]
+        if index == -5:Figura[index]=Figura1[3]
+        if index == -4:Figura[index]=Figura1[4]
+        if index == -3:Figura[-4]=Figura1[5]
+        if index == -2:Figura[-4]=Figura1[6]
+        if index == -1:Figura[-3]=Figura1[7]
+        if index ==  0:Figura[-3]=Figura1[8]
+        
+
+def ImprimeFigura():
+        for x in Figura:
+                print(x)
+
+def ImprimeGano(Word):
+        print("\n\n\n\n")
+        for x in FiguraGano:
+            print(x)
+        print("Felicidades!! La palabra era ",Word)       
+
+def ImprimePerdio(Word):
+        print("\n\n\n\n")
+        for x in FiguraPerdio:
+                print(x)
+        print("\nMaximo intentos fallidos,lo sentimos. La palabra era:",Word.upper())
+
+def RevisaLetra(NuevaLetra,Lista):
+        if len(NuevaLetra) > 1:
+                return True
+        elif NuevaLetra.isalpha() == False:
+                return True          
+        elif NuevaLetra in Lista:
+                return True    
+        else:
+                return False
+      
 
 
-       
-
-     #FuncionNormal2("prueba",Letras)
-
-
-Adivina()
+RandomWord()
 
 
 
-
-
-#RandomWord()
 
 
