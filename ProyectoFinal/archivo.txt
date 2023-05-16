@@ -1,0 +1,7 @@
+What Is Artificial Intelligence (Ai)?
+
+>>>>>>>Artificial intelligence (AI) refers to the simulation of human intelligence by software-coded heuristics.
+Nowadays this code is prevalent in everything from cloud-based, enterprise applications to consumer apps and even embedded firmware.
+The year 2022 brought AI into the mainstream through widespread familiarity with applications of Generative Pre-Training Transformer.
+>>>>>>>The ideal characteristic of artificial intelligence is its ability to rationalize and take actions that have the best chance of achieving a specific goal.
+Deep learning techniques enable this automatic learning through the absorption of huge amounts of unstructured data such as text, images, or video.

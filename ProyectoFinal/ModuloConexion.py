@@ -12,7 +12,12 @@ def RevisaArchivo():
 
 def CrearArchivo():
     archivo_texto=open(ruta+'archivo.txt','w') 
-    archivo_texto.write("Titulo\n\nEsta es la linea 1\nEsta es la linea 2\nEsta es la linea 3\nEsta es la linea 4\nEsta es la linea 5")    
+    archivo_texto.write("What Is Artificial Intelligence (Ai)?\n\n"
+                        "Artificial intelligence (AI) refers to the simulation of human intelligence by software-coded heuristics.\n"
+                        "Nowadays this code is prevalent in everything from cloud-based, enterprise applications to consumer apps and even embedded firmware.\n"
+                        "The year 2022 brought AI into the mainstream through widespread familiarity with applications of Generative Pre-Training Transformer.\n"
+                        "The ideal characteristic of artificial intelligence is its ability to rationalize and take actions that have the best chance of achieving a specific goal.\n"
+                        "Deep learning techniques enable this automatic learning through the absorption of huge amounts of unstructured data such as text, images, or video.")    
     archivo_texto.close()
     
 

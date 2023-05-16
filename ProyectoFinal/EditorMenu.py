@@ -30,11 +30,13 @@ def Menu():
         
     Seleccion=(input("¿Que operación desea realizar? "))
     if Seleccion =="1":EP.CentrarTitulo()
-    if Seleccion =="2":EP.AlineaIzq()
-    if Seleccion =="3":EP.AlineaDer()
-    if Seleccion =="4":EP.MayusculaMenu()
-    if Seleccion =="5":EP.MinusculaMenu()
-
+    elif Seleccion =="2":EP.AlineaIzq()
+    elif Seleccion =="3":EP.AlineaDer()
+    elif Seleccion =="4":EP.MayusculaMenu()
+    elif Seleccion =="5":EP.MinusculaMenu()
+    elif Seleccion =="6":EP.Buscar()
+    elif Seleccion =="8":EP.Borrar()  
+    else: print ("Opción Invalida")
 
 def Cont():
     """
