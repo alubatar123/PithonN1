@@ -22,7 +22,7 @@ def Menu():
     print(" _______________________________________"'\n'
         "|      Operaciones disponibles:         |"'\n'
         "|                                       |"'\n'
-        "| (1) Centrar Titulo   (5) Minusculas   |"'\n'
+        "| (1) Formato Titulo   (5) Minusculas   |"'\n'
         "| (2) Alinear Izq      (6) Buscar       |"'\n'
         "| (3) Alinear Der      (7) Mover        |"'\n'
         "| (4) Mayúsculas       (8) Borrar       |"'\n'

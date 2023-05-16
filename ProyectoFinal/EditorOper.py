@@ -13,18 +13,22 @@ def ImprimeTexto(Lista):
         print(x,end="") 
     print("\n=======================================FIN DE TEXTO========================================")
 
-def Cargando():
+def PedirActual(Lista):
     print("\nEfectuando cambios. Favor espere") 
     print("2seg"),time.sleep(1),print("1seg"),time.sleep(1)    
+    MC.Actualiza(Lista)
+    Lista=MC.LeeArchivo()             
+    ImprimeTexto(Lista)
+    
 
 def CentrarTitulo():
     Lista=MC.LeeArchivo() 
     ImprimeTexto(Lista)
-    Cargando()     
-    
-    Lista[0]=Lista[0].strip().title().center((len(Lista[0]))+49)+"\n\n"    
-    ImprimeTexto(Lista)
-    MC.Actualiza(Lista)
+    Lista[0]=Lista[0].strip()   
+    #Lista[0]=Lista[0].rjust(len(Lista[0]))
+    Lista[0]=Lista[0].title().center((len(Lista[0]))+49)+"\n"  
+    PedirActual(Lista) 
+
   
 
 def AlineaIzq():
@@ -41,11 +45,9 @@ def AlineaIzq():
             print(f"Linea {Linea} ya fue alineada a la izquierada")
         else:
             Lista[Linea+1]=Lista[Linea+1].strip().replace(">","")
-            Lista[Linea+1]=Lista[Linea+1].ljust(7+len(Lista[Linea+1]),"<")+"\n"        
-            MC.Actualiza(Lista)
-            Lista=MC.LeeArchivo() 
-            Cargando()
-            ImprimeTexto(Lista)
+            Lista[Linea+1]=Lista[Linea+1].ljust(7+len(Lista[Linea+1]),"<")+"\n"  
+            PedirActual(Lista)      
+  
     except:
         print("Valor Invalido")
 
@@ -54,7 +56,7 @@ def AlineaDer():
     Counter=1
     print("\n=====================================LINEAS DISPONIBLES====================================")
     for x in (Lista[2:(len(Lista)+1)]):                   
-        print("Linea[",Counter,"]",x,end="")
+        print(f"Párrafo[{Counter}]\n",x,end="")
         Counter+=1 
     print("\n============================================================================================")
     try:    
@@ -63,11 +65,9 @@ def AlineaDer():
             print(f"Linea {Linea} ya fue alineada a la derecha")
         else:
             Lista[Linea+1]=Lista[Linea+1].strip().replace("<","")
-            Lista[Linea+1]=Lista[Linea+1].rjust(7+len(Lista[Linea+1]),">")+"\n"        
-            MC.Actualiza(Lista)
-            Lista=MC.LeeArchivo() 
-            Cargando()
-            ImprimeTexto(Lista)
+            Lista[Linea+1]=Lista[Linea+1].rjust(7+len(Lista[Linea+1]),">")+"\n" 
+            PedirActual(Lista)       
+
     except:
         print("Valor Invalido")
 
@@ -86,10 +86,10 @@ def MayusculaMenu():
     elif Select=="4":
         Counter=1
         for x in (Lista[2:(len(Lista)+1)]):                   
-            print("Linea[",Counter,"]\n",x,end="")
+            print(f"Párrafo[{Counter}]\n",x,end="")
             Counter+=1 
         try:    
-            Linea=int(input("\n\n¿Cúal linea desea pasar a Mayúscula? "))
+            Linea=int(input("\n\n¿Cúal párrafo desea pasar a Mayúscula? "))
             if Linea+2>len(Lista):
                 print("Valor Invalido")
             else:Mayuscula(Lista,Linea+1,(Linea+2),Linea+1)               
@@ -102,10 +102,8 @@ def Mayuscula(Lista,A,B,Counter):
     for x in (Lista[A:B]):                   
         Lista[Counter]=Lista[Counter].upper()
         Counter+=1
-    MC.Actualiza(Lista)
-    Lista=MC.LeeArchivo()
-    Cargando()
-    ImprimeTexto(Lista)
+    PedirActual(Lista) 
+
 
 def MinusculaMenu():
     Lista=MC.LeeArchivo() 
@@ -124,7 +122,7 @@ def MinusculaMenu():
             print("Linea[",Counter,"]\n",x,end="")
             Counter+=1 
         try:    
-            Linea=int(input("\n\n¿Cúal linea desea pasar a Minúsculas? "))
+            Linea=int(input("\n\n¿Cúal párrafo desea pasar a Minúsculas? "))
             if Linea+2>len(Lista):
                 print("Valor Invalido")
             else:Minuscula(Lista,Linea+1,(Linea+2),Linea+1)   
@@ -137,66 +135,60 @@ def Minuscula(Lista,A,B,Counter):
     for x in (Lista[A:B]):                   
         Lista[Counter]=Lista[Counter].lower()
         Counter+=1
-    MC.Actualiza(Lista)
-    Lista=MC.LeeArchivo()
-    Cargando()
-    ImprimeTexto(Lista)
+    PedirActual(Lista)
 
-
-def Buscar():
-    Lista=MC.LeeArchivo() 
-    ImprimeTexto(Lista)
-    print(" ")    
-    Select=input("¿Cúal palabra desea encontar? ")
-    Count=1
-    Acierto=0
-    if Select.lower() in Lista[0].lower():        
-        print('La palabra "',Select,'" se encuentra en el titulo del texto')
-        Acierto=1
-    for x in Lista[2:(len(Lista)+1)]:
-        if Select.lower() in x.lower():            
-            print('La palabra "',Select,'" es parte del párrafo',Count)
-            Acierto=1
-        Count+=1
-    if Acierto == 0: print('La palabra "',Select,'" no se encontra en el texto')
 
 
 def Buscar(accion="encontrar"):
     Lista=MC.LeeArchivo() 
     ImprimeTexto(Lista)
     print(" ")    
-    Select=input(f"¿Cúal palabra desea {accion}? ")
+    Select=input(f"¿Cúal palabra/cadena de letras desea {accion}? ")
     Count=1
     Acierto=0
+    AciertoLista=[]
     if Select.lower() in Lista[0].lower():        
         print('La palabra "',Select,'" se encuentra en el titulo del texto')
+        AciertoLista.append(0)
         Acierto=1
     for x in Lista[2:(len(Lista)+1)]:
         if Select.lower() in x.lower():            
             print('La palabra "',Select,'" es parte del párrafo',Count)
+            AciertoLista.append(Count+1)
             Acierto=1
         Count+=1
     
     if Acierto == 0: print('La palabra "',Select,'" no se encontra en el texto')
-    return Select,Acierto
+    return Select,Acierto,AciertoLista
 
 
 
 
 
 def Borrar():
-    Palabra,Acierto=Buscar("borrar")
-    print(Palabra,Acierto)
-    # print("Que acción desea efectuar: 'n[1]Borrar todas las instancias\n[2]Borrar instancia de linea en particular")
-    # Select=input("Selección: ")
-    # if Select == "1":
-    #     Lista=MC.LeeArchivo()
-    #     count=0
-    #     for x in Lista:
-    #         Lista[count]=Lista[count].replace(Palabra,"")
-    # elif        
-    # MC.Actualiza(Lista)
-    # Lista=MC.LeeArchivo()
-    # Cargando()
-    # ImprimeTexto(Lista)
-
+    Palabra,Acierto,AciertoLista=Buscar("borrar")  
+    Lista=MC.LeeArchivo()  
+    if Acierto == 1:
+        print("\nQue acción desea efectuar: \n\n [1]Borrar todas las instancias\n [2]Borrar instancia de linea en particular\n [3]Borrar todo el texto\n")
+        Select=input("Selección: ")
+        if Select == "1":
+            
+            count=0
+            for x in Lista:
+                Lista[count]=Lista[count].lower().replace(Palabra.lower(),"")
+                count+=1
+            PedirActual(Lista)    
+        elif Select == "2":
+            print(AciertoLista)
+            print(f"¿De cúal linea desea borrar'{Palabra}' ?")
+            for x in AciertoLista:
+                if x == 0:print("(0) - Del Título")
+                else: print(f"({x-1}) - Párrafo[{x-1}]")
+            Select=input("\nSelección: ")
+                #try:
+            Lista[x]=Lista[x].lower().replace(Palabra.lower(),"")
+            PedirActual(Lista)  
+                #except:
+                #    print("Opcion Invalida")    
+        else: print("Opcion invalida")       
+        
