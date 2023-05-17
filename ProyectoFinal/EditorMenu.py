@@ -14,10 +14,12 @@ g.	Cortar y pegar texto. Valor 6 pts.
 h.	Eliminar texto.  Valor 4 pts.
 
 """
-
+#Se importa el Modulo ModuloConexion para verificacion de archivo
+# Se importa el modulo EditorOper quien realiza las funciones especificas
 from ModuloConexion import RevisaArchivo
 import EditorOper as EP
 
+#Menu del usuario
 def Menu():
     print(" _______________________________________"'\n'
         "|      Operaciones disponibles:         |"'\n'
@@ -27,7 +29,7 @@ def Menu():
         "| (3) Alinear Der      (7) Mover        |"'\n'
         "| (4) Mayúsculas       (8) Borrar       |"'\n'
         "|_______________________________________|"'\n')
-        
+#cada opcion llama a la  funcion especifica       
     Seleccion=(input("¿Que operación desea realizar? "))
     if Seleccion =="1":EP.CentrarTitulo()
     elif Seleccion =="2":EP.AlineaIzq()
@@ -55,8 +57,10 @@ def Cont():
         else:
             print("Opcion Invalida")
 
+#Se llama la funcion que verifica si el archivo ya existe o si debe ser creado
 RevisaArchivo()
 Menu() 
+#Ciclo infinito que permite que el programa no se detenga hasta que se le indique
 while Cont():
     Menu()    
        

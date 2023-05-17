@@ -1,7 +1,7 @@
+                        what is artificial gence (ai)?                         
 
-
-artificial intelligence  refers to the simulation of human intelligence by software-coded heuristics. nowadays this code is prevalent in everything enterprise and firmware<<<<<<<
 nowadays this code is prevalent in everything from cloud-based, enterprise applications to consumer apps and even embedded firmware.
 the year 2022 brought ai into the mainstream through widespread familiarity with applications of generative pre-training transformer.
-the ideal characteristic of artificial intelligence is its ability to rationalize and take actions that have the best chance of achieving a specific goal.
->>>>>>>deep learning techniques enable this automatic learning through the absorption of huge amounts of unstructured data such as text, images, or video.
+>>>>>>>artificial gence (ai) refers to the simulation of human gence by software-coded heuristics. nowadays this code is prevalent in everything enterprise and firmware
+the ideal characteristic of artificial gence is its ability to rationalize and take actions that have the best chance of achieving a specific goal.
+>>>>>>>deep learning techniques enable this automatic learning through the absorption of huge amounts of unstructured data such as text, images, or .

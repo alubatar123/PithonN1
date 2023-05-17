@@ -55,7 +55,7 @@ def MuestraLetras(NewLetter,Word):
 #funcion que permite escojer una palabra de la lista
 def RandomWord():
         Palabras=[]
-        Archivo=open('C:/Users/Chango/Desktop/Python/Curso/PithonN1/ProyectoFinal/Palabras.txt','r')
+        Archivo=open('C:/PithonN1/ProyectoFinal/Palabras.txt','r')
         x=(Archivo.readlines())
         for line in x:
                 Palabras.append(line.strip())  
