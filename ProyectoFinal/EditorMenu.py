@@ -35,6 +35,7 @@ def Menu():
     elif Seleccion =="4":EP.MayusculaMenu()
     elif Seleccion =="5":EP.MinusculaMenu()
     elif Seleccion =="6":EP.Buscar()
+    elif Seleccion =="7":EP.Mover()
     elif Seleccion =="8":EP.Borrar()  
     else: print ("Opción Invalida")
 
