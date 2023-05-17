@@ -2,7 +2,7 @@
 import os
 
 #ruta donde se almacena el archivo de texto
-ruta='C:/Users/Chango/Desktop/Python/Curso/PithonN1/ProyectoFinal/'
+ruta='C:/Users/Chango/Desktop/Python/Curso/PithonN1/ProyectoFinal/EditorTexto/'
 
 #funcion que confirma si el archivo ya existe. De existir ya, este sera borrado y recreado desde 0
 def RevisaArchivo():

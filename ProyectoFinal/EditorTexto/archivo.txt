@@ -1,4 +1,4 @@
-What Is Artificial Intelligence (Ai)?
+                        What Is Artificial Intelligence (Ai)?                         
 
 Artificial intelligence (AI) refers to the simulation of human intelligence by software-coded heuristics. Nowadays this code is prevalent in everything enterprise and firmware
 Nowadays this code is prevalent in everything from cloud-based, enterprise applications to consumer apps and even embedded firmware.
