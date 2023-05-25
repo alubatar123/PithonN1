@@ -1,0 +1,1 @@
+{'USUARIO1': {'NOMBRE': 'Napa', 'GANES': 0, 'PERDIDAS': 0}, 'USUARIO3': {'NOMBRE': 'Napa', 'GANES': 0, 'PERDIDAS': 0}}
