@@ -5,6 +5,9 @@ MiMazo= Baraja()
 BarajaCompleta=MiMazo.CreaMazo()
 MazoTemp=[]
 
+
+
+
 def BarajaCartas():    
     random.shuffle(BarajaCompleta)
     
