@@ -1,1 +1,1 @@
-{'USUARIO1': {'NOMBRE': 'Napa', 'GANES': 0, 'PERDIDAS': 0}, 'USUARIO3': {'NOMBRE': 'Napa', 'GANES': 0, 'PERDIDAS': 0}}
+{'USUARIO1': {'NOMBRE': 'Goku', 'GANES': 100, 'DERROTAS': 50}, 'USUARIO2': {'NOMBRE': 'Napa', 'GANES': 100, 'DERROTAS': 50}, 'USUARIO3': {'NOMBRE': 'Gohan', 'GANES': 0, 'DERROTAS': 0}, 'USUARIO4': {'NOMBRE': 'gohans', 'GANES': 0, 'DERROTAS': 0}, 'USUARIO5': {'NOMBRE': 'picolo', 'GANES': 0, 'DERROTAS': 0}, 'USUARIO6': {'NOMBRE': 'krilin', 'GANES': 0, 'DERROTAS': 0}, 'USUARIO7': {'NOMBRE': 'radix', 'GANES': 0, 'DERROTAS': 0}}
