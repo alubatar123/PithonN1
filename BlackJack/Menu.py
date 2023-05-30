@@ -1,5 +1,6 @@
 import time
 from Usuarios import Usuario
+from Juego import Comienza
 
 #menu principal del juego
 def Menu():
@@ -39,27 +40,30 @@ def ValidarUsuario():
 
 #crea una lista de los usuarios existentes    
 def ListarUsuario(): 
+    print("\n===========================================\n")
     User=Usuario()       
     TempDic=User.BuscaUsuario() 
-    Seleccion=(input("\nSeleccion el ID del usuario? "))
+    Seleccion=(input("\n===========================================\nSeleccion el ID del usuario? "))
     if Seleccion.upper() == "R":
          Menu()             
     elif int(Seleccion) in TempDic:
-         print("yes") 
+        print((TempDic[int(Seleccion)]))
+        
 
            
 def VerRegistros():
     User=Usuario()
     TempDic=User.BuscaUsuario()
-    Seleccion=(input("\nSeleccion el ID del usuario? "))
+    Seleccion=(input("\n===========================================\nSeleccion el ID del usuario? "))
     OB=Usuario()
+
     try:
         if Seleccion.upper() == "R":
             Menu()             
         elif int(Seleccion) in TempDic:
-            print("\nEstadisticas de Usuario\n")        
+            print("\n===========================================\nEstadisticas de Usuario\n")        
             OB.StatUser(TempDic[int(Seleccion)])  
-            print("\nRegresando al menu principal..."),time.sleep(3)
+            print("\n===========================================\nRegresando al menu principal..."),time.sleep(3)
             Menu()    
     except: 
         print("\nOpcion invalida. Regresando al menu"),time.sleep(1)
@@ -78,7 +82,7 @@ def Registrar():
             print("\nOpcion invalida. Regresando al menu"),time.sleep(1)
             Menu()     
     else:
-        print("fine")
+        Comienza()
 
     
 

@@ -18,7 +18,8 @@ def Cartas4User(count):
         for e in range(count):
             UserMazoTemp.append(BarajaCompleta.pop(0))    
         MiMazo.CartaAspecto(*UserMazoTemp)
-        print("===================================================\n")
+        ImprimeMazo()
+        #print("===================================================\n")
         if count>0:
             HuboGane()    
     except:
@@ -28,16 +29,25 @@ def Cartas4User(count):
      
 
 def Cartas4Crupier(count):
-    print("===================================================\nMano Crupier")
+    #print("===================================================\nMano Crupier")
     try:
         for e in range(count):
             CrupMazoTemp.append(BarajaCompleta.pop(0))    
-        MiMazo.CartaAspecto(*CrupMazoTemp) 
-        
+        #MiMazo.CartaAspecto(*CrupMazoTemp) 
+        ImprimeMazo()
     except:
         IndexError
         print("Fin del mazo")
-        
+
+def ImprimeMazo():
+    print("===================================================\nMano Crupier")
+    MiMazo.CartaAspecto(*CrupMazoTemp) 
+    print("Mano Usuario") 
+    MiMazo.CartaAspecto(*UserMazoTemp)
+    print("===================================================\n")
+
+
+
 def Verifica(TipoMano):
     GaneCounter=0
       
@@ -67,7 +77,7 @@ def GaneUsuario():
         return "Perdio"
          
     else:
-        return "Cont"        
+        return "Cont",UserCounter        
        
 def GaneCrupier():
     
@@ -87,44 +97,82 @@ def GaneCrupier():
 def HuboGane():
     global Seguir
     GC,CrupierCounter=GaneCrupier()
-    GU=GaneUsuario()
-    print(GC)
-    print(GU)
+    GU,UserCounter=GaneUsuario()
+
     if GC=="Gano" and GU=="Gano":
         print("Empate\n")
+        print(f"Casa total{CrupierCounter}\nUsuario total{UserCounter}")
+        OtraPartida()
     elif GC=="Perdio" and GU=="Perdio":
-        print("Ambos pierden\n")         
+        print("Ambos pierden\n")
+        OtraPartida()         
     elif GC=="Gano" and (GU=="Cont" or GU=="Perdio"):
-        print("La casa gana\n") 
+        print("La casa gana\n")
+        OtraPartida() 
     elif GC=="Cont" and GU=="Perdio":
-        print("Lo sentimos, perdió")        
+        print("Lo sentimos, perdió")
+        OtraPartida()        
     elif (GC=="Cont" or GC=="Perdio") and GU=="Gano":
         print("Felicidades Ganó\n")
+        OtraPartida()
     elif GC=="Perdio" and GU=="Cont":
-        print("La casa perdió\n")                      
+        print("La casa perdió\n") 
+        OtraPartida()                     
     elif GC=="Cont" and GU=="Cont":
-        if Seguir == 1:
-            Select=input("¿Desea otra carta?Y/N ")
-            if Select == "y" or Select == "Y":
-                Seguir=2    
-                Cartas4Crupier(0)         
-                Cartas4User(1)                 
-        elif Seguir == 2:
-            if CrupierCounter<17:
-                Seguir=1
-                Cartas4Crupier(1)
-                HuboGane()
-            else:
-                Seguir=1
-                Cartas4Crupier(1)
-                Cartas4User(0)
-                HuboGane()
+        Repartirmas(CrupierCounter,UserCounter)
 
+
+def Repartirmas(CrupierCounter,UserCounter):    
+    if Seguir == 1:
+        Select=input("¿Desea otra carta?Y/N ")
+        if Select.upper() == "Y":
+            Seguir=2                            
+            Cartas4User(1)
+        if Select.upper() == "N":
+            Seguir=3
+            HuboGane()
+    elif Seguir == 2:
+        if CrupierCounter<17:
+            Seguir=1
+            Cartas4Crupier(1)
+            HuboGane()
+        else:
+            Seguir=1                               
+            HuboGane()
+    elif Seguir == 3:
+        if CrupierCounter<17:
+            Seguir=3
+            Cartas4Crupier(1)
+            HuboGane()
+        else:
+            Seguir=4                            
+            HuboGane()    
+    elif Seguir == 3:
+        if CrupierCounter>UserCounter:
+            print("La casa gana")
+        elif CrupierCounter>UserCounter:
+            print("Felicidades Gano")               
+        else:
+            print("Empate") 
+    OtraPartida()
 #A A 4 Q = 11 1 4 =16 26 = 16
 #4 Q = 14 + A = 15
 #print(BarajaCompleta)
-BarajaCartas()
-Cartas4Crupier(2)
-Cartas4User(2)
+
+def Comienza(Usuario):
+    BarajaCartas()
+    Cartas4Crupier(2)
+    Cartas4User(2)
+
+def OtraPartida():
+    Select=input("¿Otra partida? Y/N")
+    if Select.upper()=="Y":
+        Cartas4Crupier(2)
+        Cartas4User(2)
+    elif Select.upper()=="N":
+        Comienza()
+    else:
+        print("Opcion Invaida")
+        OtraPartida()    
 #print(BarajaCompleta)
 #Verifica()
