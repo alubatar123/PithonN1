@@ -1,6 +1,6 @@
 import time
 from Usuarios import Usuario
-from Juego import Comienza
+from Juego import Comienza, NuevaBaraja
 
 #menu principal del juego
 def Menu():
@@ -40,38 +40,55 @@ def ValidarUsuario():
 
 #crea una lista de los usuarios existentes    
 def ListarUsuario(): 
-    print("\n===========================================\n")
-    User=Usuario()       
-    TempDic=User.BuscaUsuario() 
-    Seleccion=(input("\n===========================================\nSeleccion el ID del usuario? "))
-    if Seleccion.upper() == "R":
-         Menu()             
-    elif int(Seleccion) in TempDic:
-        print((TempDic[int(Seleccion)]))
-        
+    User=Usuario()  
+    print("\n===========================================\n")     
+    TempDicUser,TempDicNom=User.BuscaUsuario()     
+    if len(TempDicUser)==0:
+        print("No aun registros. Regresando al menu"),time.sleep(1)
+        Menu()
+    else:       
+        try:           
+            Seleccion=(input("\n===========================================\nSeleccion el ID del usuario? "))
+            if Seleccion.upper() == "R":
+                Menu()             
+            elif int(Seleccion) in TempDicUser:
+                NuevaBaraja()
+                Comienza([TempDicUser[int(Seleccion)],TempDicNom[int(Seleccion)]])
+                Menu()        
+        except SyntaxError:
+            print("Opcion invalida. Regresando al menu principal..."),time.sleep(2)
+            Menu()  
 
            
 def VerRegistros():
-    User=Usuario()
-    TempDic=User.BuscaUsuario()
-    Seleccion=(input("\n===========================================\nSeleccion el ID del usuario? "))
     OB=Usuario()
-
-    try:
-        if Seleccion.upper() == "R":
-            Menu()             
-        elif int(Seleccion) in TempDic:
-            print("\n===========================================\nEstadisticas de Usuario\n")        
-            OB.StatUser(TempDic[int(Seleccion)])  
-            print("\n===========================================\nRegresando al menu principal..."),time.sleep(3)
-            Menu()    
-    except: 
-        print("\nOpcion invalida. Regresando al menu"),time.sleep(1)
-        Menu()      
-     
+    TempDicUser,TempDicNom=OB.BuscaUsuario() 
+    
+    if len(TempDicNom)==0:
+        print("No aun registros. Regresando al menu"),time.sleep(1)
+        Menu() 
+    else:      
+        try:
+            Seleccion=(input("\n===========================================\nSeleccion el ID del usuario? "))
+            if Seleccion.upper() == "R":
+                Menu()             
+            elif int(Seleccion) in TempDicUser:        
+                print("\n===========================================\nEstadisticas de Usuario\n")        
+                Stats=OB.StatUser(TempDicUser[int(Seleccion)])
+                print(" Nombre =",Stats[0],"\n",
+                    "GANES =",Stats[1],"\n",
+                    "DERROTAS =",Stats[2],"\n",
+                    "EMPATES =",Stats[3])  
+                print("\n===========================================\nRegresando al menu principal..."),time.sleep(3)
+                Menu()    
+        except: 
+            print("\nOpcion invalida. Regresando al menu"),time.sleep(1)
+            Menu()      
+        
 def Registrar():
     OB=Usuario()
-    if OB.Registrar() == False:
+    existe, NuevoUserList=OB.Registrar()
+    if existe == False:
         Select=input("¿Desea tratar de nuevo? Y/N ")
         if Select.lower() == "y":
             Registrar()
@@ -82,7 +99,9 @@ def Registrar():
             print("\nOpcion invalida. Regresando al menu"),time.sleep(1)
             Menu()     
     else:
-        Comienza()
+        NuevaBaraja()
+        Comienza(NuevoUserList)
+        Menu()
 
     
 

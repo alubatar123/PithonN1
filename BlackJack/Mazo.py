@@ -7,6 +7,7 @@ class Baraja:
         
         
     def CreaMazo(self):
+        self.baraja.clear()
         for e in self.__simbolo:
             for x in self.__cartas:
                 self.baraja.append(x+" "+e)
