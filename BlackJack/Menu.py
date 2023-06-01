@@ -53,13 +53,18 @@ def ListarUsuario():
                 Menu()             
             elif int(Seleccion) in TempDicUser:
                 NuevaBaraja()
+                print("\nComenzemos. Suerte",TempDicNom[int(Seleccion)],"!" )
                 Comienza([TempDicUser[int(Seleccion)],TempDicNom[int(Seleccion)]])
-                Menu()        
+                Menu()   
+            else:
+                print("Opcion invalida. Regresando al menu principal..."),time.sleep(2)
+                Menu()  
+         
         except SyntaxError:
             print("Opcion invalida. Regresando al menu principal..."),time.sleep(2)
             Menu()  
 
-           
+#funcion que permite ver el registro de usuarios           
 def VerRegistros():
     OB=Usuario()
     TempDicUser,TempDicNom=OB.BuscaUsuario() 
@@ -80,11 +85,16 @@ def VerRegistros():
                     "DERROTAS =",Stats[2],"\n",
                     "EMPATES =",Stats[3])  
                 print("\n===========================================\nRegresando al menu principal..."),time.sleep(3)
-                Menu()    
+                Menu() 
+            else:
+                print("Opcion invalida. Regresando al menu principal..."),time.sleep(2)
+                Menu()  
+
         except: 
             print("\nOpcion invalida. Regresando al menu"),time.sleep(1)
             Menu()      
-        
+
+#funcion que permite conectar con la Base dedatos        
 def Registrar():
     OB=Usuario()
     existe, NuevoUserList=OB.Registrar()
@@ -100,10 +110,11 @@ def Registrar():
             Menu()     
     else:
         NuevaBaraja()
+        print("\nComenzemos. Suerte",NuevoUserList[1],"!" )
         Comienza(NuevoUserList)
         Menu()
 
     
 
-     
+#funcion que inicia el programa     
 Menu()     
