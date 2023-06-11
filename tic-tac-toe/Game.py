@@ -24,7 +24,7 @@ def display_board(board):
         for element in line:
             print("\u0332".join(element).upper(),end="")
         print()
-    print(Avail)
+    
     # The function accepts one parameter containing the board's current status
     # and prints it out to the console.
     
@@ -47,7 +47,7 @@ def enter_move(key,Move):
     pass
 
 def Next_User_Move(PCmove):  
-    Move=input("Digite numero de casilla: ")  
+    Move=input("Turno del Usuario\nDigite numero de casilla: ")  
     if Move not in Avail:
         print("Numero o opcion no disponible")
         Next_User_Move()       
@@ -65,12 +65,17 @@ def victory_for(board, sign):
 def draw_move(move_number):
     
     if move_number==1:
-        print("Turno PC"),time.sleep(1) 
-        enter_move("⥀",random.choice(Avail))
+        print("Turno PC"),time.sleep(1)         
+        enter_move("⥀",PO.FirstMove(Avail))
         Next_User_Move(2)
-    elif move_number==2:        
-        print(PO.confirm(realtable,Avail))
-      
+    elif move_number==2:
+        print("Turno PC"),time.sleep(1)        
+        enter_move("⥀",PO.ContraUser(realtable,Avail))
+        Next_User_Move(3)
+    elif move_number==3:
+        print("Turno PC"),time.sleep(1)        
+        enter_move("⥀",PO.FinalMove(realtable,Avail))
+        Next_User_Move(3)  
 
     
 
