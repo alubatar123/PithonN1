@@ -60,16 +60,6 @@ def SecondMove(UserList,AvailList):
         return result
     else:
         return NextCorner(UserList,AvailList)
-        # if UserList[1]=="⊙" and (all(i in AvailList for i in ["3","2"])):        
-        #     return "3"
-        # elif UserList[1]=="⊙" and (all(i in AvailList for i in ["5","9"])):        
-        #     return "9"
-        # elif UserList[1]=="⊙" and (all(i in AvailList for i in ["4","7"])):        
-        #     return "7"
-        # elif UserList[3]=="⊙" and (all(i in AvailList for i in ["6","9"])):        
-        #     return "9"    
-        # elif UserList[3]=="⊙" and (all(i in AvailList for i in ["5","7"])):        
-        #     return "7"
 
 def NextCorner(UserList,AvailList):    
     if UserList[1]=="⊙" and (all(i in AvailList for i in ["3","2"])):        
