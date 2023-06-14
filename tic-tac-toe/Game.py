@@ -9,21 +9,30 @@ cat=(
      {_:Y:.}_//
  ____{_}^-'{_}____
 """)
+table=Avail=realtable=[]
 
-table=[["|  TIC  TAC  TOE  |"],
-       ["|‾‾‾‾‾|‾‾‾‾‾|‾‾‾‾‾|"],       
-       ["|  7  ","|  8  ","|  9  ","|"],
-       ["|     |     |     |"], 
-       ["|‾‾‾‾‾|‾‾‾‾‾|‾‾‾‾‾|"],                     
-       ["|  4  ","|  5  ","|  6  ","|"],
-       ["|     |     |     |"], 
-       ["|‾‾‾‾‾|‾‾‾‾‾|‾‾‾‾‾|"],               
-       ["|  1  ","|  2  ","|  3  ","|"],
-       ["|_____|_____|_____|"]]
+def defineValues():
+    global table,Avail,realtable
+    table=[["|  TIC  TAC  TOE  |"],
+        ["|‾‾‾‾‾|‾‾‾‾‾|‾‾‾‾‾|"],       
+        ["|  7  ","|  8  ","|  9  ","|"],
+        ["|     |     |     |"], 
+        ["|‾‾‾‾‾|‾‾‾‾‾|‾‾‾‾‾|"],                     
+        ["|  4  ","|  5  ","|  6  ","|"],
+        ["|     |     |     |"], 
+        ["|‾‾‾‾‾|‾‾‾‾‾|‾‾‾‾‾|"],               
+        ["|  1  ","|  2  ","|  3  ","|"],
+        ["|_____|_____|_____|"]]
 
-Avail=[str(x) for x in range(1,10)]
-realtable=Avail.copy()
-realtable.insert(0,"0")
+    Avail=[str(x) for x in range(1,10)]
+    realtable=Avail.copy()
+    realtable.insert(0,"0")
+    for x in range (0,5):  
+        b = " **CARGANDO-NUEVA-PARTIDA"+ "." * x
+        print (b, end="\r")
+        time.sleep(0.8)      
+    print("\n"*18)
+
 def display_board(board):
     print(cat,end="")
     for line in board:
@@ -120,10 +129,6 @@ def draw_move(move_number):
     
 while True:
     print()
-    for x in range (0,5):  
-        b = " **CARGANDO-NUEVA-PARTIDA"+ "." * x
-        print (b, end="\r")
-        time.sleep(0.8)      
-    print("\n"*18)
+    defineValues()
     display_board(table)
     Next_User_Move(1)
