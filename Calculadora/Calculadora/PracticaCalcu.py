@@ -3,7 +3,8 @@ import Calculos as Cal
 
 raiz=Tk()
 raiz.title("Calculadora Chukito")
-
+raiz.resizable(False,False)
+raiz.geometry("350x389")
 miFrame=Frame(raiz)
 miFrame.pack()
 path="Curso\InterfacesGrafica\Calculadora"########Cambiar con el path actual
@@ -165,7 +166,7 @@ butonBlank=Button(miFrame,image=photoimage,highlightthickness=12,height=35,backg
 butonBlank.grid(row=2,column=1)
 
 
-raiz.geometry("350x389")
+
  
 
  
