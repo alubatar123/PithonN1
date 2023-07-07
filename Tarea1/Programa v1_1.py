@@ -2,6 +2,7 @@ General_Boolean=False
 
 DicEstu={}
 #Menu principal del programa
+
 def Menu():
     #global General_Boolean
     global DicDatos
