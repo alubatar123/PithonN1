@@ -3,7 +3,7 @@ Practica de evaluación corta 2
 Curso Python Nivel 1
 Autor Esteban Garro Echevarria
 
-1.	Efectuar un programa que efectué cálculos básicos de una calculadora
+1.	Efectuar  un programa que efectué cálculos básicos de una calculadora
  con las siguientes operaciones recibiendo dos parámetros y el tipo de operación a realizar:
 1.1.	Sumar       1.2.	Restar      1.3.	Multiplicar 1.4.	Dividir
 1.5.	Potencia    1.6.	Raíz cuadrada   1.7.	Porcentaje
