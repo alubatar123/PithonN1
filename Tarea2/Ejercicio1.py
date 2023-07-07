@@ -1,7 +1,7 @@
 """
 Curso Python Nivel 1
 Autor Esteban Garro Echevarria
-1.	Un programa que determina si un número es positivo o negativo
+1.Un programa que determina si un número es positivo o negativos
 """
 
 #Importa el modulo Continuar
